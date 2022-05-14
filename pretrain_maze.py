@@ -679,9 +679,9 @@ def main(cfg):
     root_dir = Path.cwd()
     workspace = W(cfg)
     snapshot = root_dir / 'snapshot.pt'
-    if snapshot.exists():
-        print(f'resuming: {snapshot}')
-        workspace.load_snapshot()
+    # if snapshot.exists():
+    #     print(f'resuming: {snapshot}')
+    #     workspace.load_snapshot()
     workspace.train()
 
 
