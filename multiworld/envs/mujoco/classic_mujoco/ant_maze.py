@@ -33,7 +33,7 @@ class AntMazeEnv(AntEnv):
 
         if model_path in [
             'classic_mujoco/ant_maze2_gear30_small_dt3.xml',
-            'classic_mujoco/ant_gear30_dt3_u_small.xml',  
+            'classic_mujoco/ant_gear10_dt3_u_small.xml',  
         ]:
             self.maze_type = 'u-small'
         elif model_path in [
@@ -61,7 +61,7 @@ class AntMazeEnv(AntEnv):
             'classic_mujoco/ant_gear15_dt3_no_walls_long.xml',
         ]:
             self.maze_type = 'no-walls-long'
-        elif model_path == 'classic_mujoco/ant_fb_gear30_small_dt3.xml':
+        elif model_path == 'classic_mujoco/ant_fb_gear10_small_dt3.xml':
             self.maze_type = 'fb-small'
         elif model_path in [
             'classic_mujoco/ant_fb_gear30_med_dt3.xml',
@@ -613,11 +613,11 @@ class AntMazeEnv(AntEnv):
 
         if self.model_path in [
             'classic_mujoco/ant_maze2_gear30_small_dt3.xml',
-            'classic_mujoco/ant_gear30_dt3_u_small.xml', # BK: u-small
+            'classic_mujoco/ant_gear10_dt3_u_small.xml', # BK: u-small
         ]:
             extent = [-3.5, 3.5, -3.5, 3.5]
         elif self.model_path in [  #BK: fb-small
-            'classic_mujoco/ant_fb_gear30_small_dt3.xml',
+            'classic_mujoco/ant_fb_gear10_small_dt3.xml',
         ]:
             extent = [-5.25, 5.25, -5.25, 5.25]
         elif self.model_path in [  # BK: maze-small

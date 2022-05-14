@@ -377,7 +377,7 @@ class AntEnv(MujocoEnv, Serializable, MultitaskEnv, metaclass=abc.ABCMeta):
         if self.sweep_goal is None:
             if self.model_path in [
                 'classic_mujoco/ant_maze2_gear30_small_dt3.xml',
-                'classic_mujoco/ant_gear30_dt3_u_small.xml',
+                'classic_mujoco/ant_gear10_dt3_u_small.xml',
             ]:
                 extent = [-3.5, 3.5, -3.5, 3.5]
             elif self.model_path in [
@@ -1227,7 +1227,7 @@ class AntEnv(MujocoEnv, Serializable, MultitaskEnv, metaclass=abc.ABCMeta):
     ):
         if self.model_path in [
             'classic_mujoco/ant_maze2_gear30_small_dt3.xml',
-            'classic_mujoco/ant_gear30_dt3_u_small.xml',
+            'classic_mujoco/ant_gear10_dt3_u_small.xml',
         ]:
             extent = [-3.5, 3.5, -3.5, 3.5]
         elif self.model_path in [

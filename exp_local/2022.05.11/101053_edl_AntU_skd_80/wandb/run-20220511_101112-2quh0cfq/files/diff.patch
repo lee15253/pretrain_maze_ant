@@ -361,7 +361,7 @@ index 481332b..8ccc4ab 100755
          ]:
              extent = [-3.5, 3.5, -3.5, 3.5]
 +        elif self.model_path in [  #BK: fb-small
-+            'classic_mujoco/ant_fb_gear30_small_dt3.xml',
++            'classic_mujoco/ant_fb_gear10_small_dt3.xml',
 +        ]:
 +            extent = [-5.25, 5.25, -5.25, 5.25]
 +        elif self.model_path in [  # BK: maze-small

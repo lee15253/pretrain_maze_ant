@@ -651,7 +651,7 @@ def register_my_envs():
         id='NogoalAntUSmallTrainEnv-v0',
         entry_point='multiworld.envs.mujoco.classic_mujoco.ant_maze:AntMazeEnv',
         kwargs={
-            'model_path': 'classic_mujoco/ant_gear30_dt3_u_small.xml',
+            'model_path': 'classic_mujoco/ant_gear10_dt3_u_small.xml',
             'use_euler': True,
             'reward_type': 'vectorized_epos',
             'reset_and_goal_mode': 'uniform_pos_and_rot',
@@ -665,7 +665,7 @@ def register_my_envs():
         id='AntUSmallTrainEnv-v0',
         entry_point='multiworld.envs.mujoco.classic_mujoco.ant_maze:AntMazeEnv',
         kwargs={
-            'model_path': 'classic_mujoco/ant_gear30_dt3_u_small.xml',
+            'model_path': 'classic_mujoco/ant_gear10_dt3_u_small.xml',
             'use_euler': True,
             'reward_type': 'vectorized_epos',
             'reset_and_goal_mode': 'uniform_pos_and_rot',
@@ -849,7 +849,7 @@ def register_my_envs():
         id='AntFbSmallTrainEnv-v1',
         entry_point='multiworld.envs.mujoco.classic_mujoco.ant_maze:AntMazeEnv',
         kwargs={
-            'model_path': 'classic_mujoco/ant_fb_gear30_small_dt3.xml',
+            'model_path': 'classic_mujoco/ant_fb_gear10_small_dt3.xml',
             'use_euler': True,
             'reward_type': 'vectorized_epos',
             'reset_and_goal_mode': 'uniform_pos_and_rot',
@@ -860,7 +860,7 @@ def register_my_envs():
         id='NogoalAntFbSmallTrainEnv-v1',
         entry_point='multiworld.envs.mujoco.classic_mujoco.ant_maze:AntMazeEnv',
         kwargs={
-            'model_path': 'classic_mujoco/ant_fb_gear30_small_dt3.xml',
+            'model_path': 'classic_mujoco/ant_fb_gear10_small_dt3.xml',
             'use_euler': True,
             'reward_type': 'vectorized_epos',
             'reset_and_goal_mode': 'uniform_pos_and_rot',

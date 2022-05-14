@@ -373,9 +373,9 @@ class SACAgent:
         self.actor_opt.step()
 
         # optimize alpha
-        self.log_alpha_opt.zero_grad()
-        alpha_loss.backward()
-        self.log_alpha_opt.step()
+        # self.log_alpha_opt.zero_grad()
+        # alpha_loss.backward()
+        # self.log_alpha_opt.step()
             
         if self.use_tb or self.use_wandb:
             metrics['actor_loss'] = actor_loss.item()
