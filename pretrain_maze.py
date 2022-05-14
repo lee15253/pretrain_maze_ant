@@ -49,13 +49,17 @@ class Workspace:
         self.maze_type = cfg.maze_type
         self.dtype = cfg.dtype
         self.sibling_epsilon = cfg.sibling_epsilon
+
+        # device_id
+        os.environ['CUDA_VISIBLE_DEVICES'] = str(cfg.device_id)
         
         utils.set_seed_everywhere(cfg.seed)
         self.device = torch.device(cfg.device)
 
         exp_name = '_'.join([
                 cfg.agent.name, cfg.maze_type, 
-                str(cfg.agent.skill_dim)
+                str(cfg.agent.skill_dim),
+                str(cfg.seed)
             ])
         self.exp_name = exp_name
         # create logger

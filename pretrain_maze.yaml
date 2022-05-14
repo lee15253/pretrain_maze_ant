@@ -37,6 +37,7 @@ wandb_name: None
 dtype: float32
 # experiment
 experiment: exp
+device_id: 0
 
 # maze environment settings
 maximum_timestep: 50
@@ -50,7 +51,7 @@ oracle_dur : 50000
 
 hydra:
   run:
-    dir: ./exp_local/${now:%Y.%m.%d}/${now:%H%M%S}_${agent.name}_${maze_type}_skd_${agent.skill_dim}
+    dir: ./exp_local/${now:%Y.%m.%d}/${now:%H%M%S}_${agent.name}_${maze_type}_skd_${agent.skill_dim}_seed_${seed}_deviceid_${device_id}
   sweep:
     dir: ./exp_sweep/${now:%Y.%m.%d}/${now:%H%M}_${agent.name}_${experiment}
     subdir: ${hydra.job.num}
