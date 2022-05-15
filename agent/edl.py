@@ -123,6 +123,7 @@ class EDLAgent(SACAgent):
         obs, action, extr_reward, discount, next_obs, skill = utils.to_torch(
             batch, self.device)
 
+
         # augment and encode
         obs = self.aug_and_encode(obs)
         next_obs = self.aug_and_encode(next_obs)
@@ -137,7 +138,7 @@ class EDLAgent(SACAgent):
 
             if self.use_tb or self.use_wandb:
                 metrics['intr_reward'] = intr_reward.mean().item()
-            reward = intr_reward + extr_reward
+            reward = intr_reward.unsqueeze(1) + extr_reward
         else:
             reward = extr_reward
 

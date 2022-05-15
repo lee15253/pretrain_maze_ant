@@ -120,7 +120,10 @@ class MetersGroup(object):
         if self.use_wandb:
             wandb_data = {prefix + '/' + key: val for key, val in data.items()}
             self._dump_to_wandb(data=wandb_data)
-        self._dump_to_csv(data)
+        try:
+            self._dump_to_csv(data)
+        except:
+            pass
         self._dump_to_console(data, prefix)
         self._meters.clear()
 
