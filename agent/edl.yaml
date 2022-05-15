@@ -54,7 +54,7 @@ vae_args : {
     "code_size": 20,
     "beta": 1.5,
     "normalize_inputs": false,
-    "hidden_size": 128,
+    "hidden_size": 1024,
     "num_layers": 3
 } # TODO : codebook_size = 10, code_size = 16
 
