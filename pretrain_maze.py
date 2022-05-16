@@ -243,11 +243,11 @@ class Workspace:
         # imageio.imwrite('abcd.png', rgb_img)
 
         # check state coverage (10x10 격자를 몇개 채웠는지)
-        state_coveraged_1 = self.eval_env.state_coverage_1(trajectory_all=trajectory_all,
-                                                           skill_dim=self.agent.smm.z_dim)
-        state_coveraged_2 = self.eval_env.state_coverage_2(trajectory_all=trajectory_all,
-                                                           skill_dim=self.agent.smm.z_dim)
-        num_learned_skills = np.exp(total_diayn_rw / (self.agent.skill_dim * num_eval_each_skill))
+        # state_coveraged_1 = self.eval_env.state_coverage_1(trajectory_all=trajectory_all,
+        #                                                    skill_dim=self.agent.smm.z_dim)
+        # state_coveraged_2 = self.eval_env.state_coverage_2(trajectory_all=trajectory_all,
+        #                                                    skill_dim=self.agent.smm.z_dim)
+        # num_learned_skills = np.exp(total_diayn_rw / (self.agent.skill_dim * num_eval_each_skill))
 
         if self.maze_type in ['AntU','AntFb','AntMaze']:
             num_bucket = 150
@@ -258,9 +258,9 @@ class Workspace:
             # log('episode_length', step * self.cfg.action_repeat / episode)
             log('episode', self.global_episode)
             log('step', self.global_step)
-            log(f'state_coveraged(out of {num_bucket} bucekts)', state_coveraged_1)
-            log(f'new_state_coveraged(out of {num_bucket} bucekts)', state_coveraged_2)
-            log('num_learned_skills', num_learned_skills)
+            # log(f'state_coveraged(out of {num_bucket} bucekts)', state_coveraged_1)
+            # log(f'new_state_coveraged(out of {num_bucket} bucekts)', state_coveraged_2)
+            # log('num_learned_skills', num_learned_skills)
 
 
     def eval(self):
@@ -418,9 +418,9 @@ class Workspace:
                 time_step.action = np.zeros(self.agent.smm.action_dim, dtype=time_step.observation.dtype)
                 meta = self.agent.smm.init_meta()
                 self.replay_storage_smm.add(time_step, meta)
-                # try to save snapshot
-                if self.global_frame in self.cfg.snapshots:
-                    self.save_snapshot(smm=True)
+                # # try to save snapshot
+                # if self.global_frame in self.cfg.snapshots:
+                #     self.save_snapshot(smm=True)
                 episode_step = 0
                 episode_reward = 0
 
@@ -438,6 +438,9 @@ class Workspace:
                                         self.global_step,
                                         eval_mode=False)
 
+            # try to save snapshot
+            if self.global_frame in self.cfg.snapshots:
+                self.save_snapshot(smm=True)
             # try to update the agent
             if not seed_until_step(self.global_step):
                 metrics = self.agent.smm.update(self.replay_iter_smm, self.global_step)
@@ -608,10 +611,9 @@ class Workspace:
 
             # try to evaluate
             if eval_every_step(self.global_step):
-                if self.global_step != 0:
-                    self.logger.log('eval_total_time', self.timer.total_time(),
-                                    self.global_frame)
-                    self.eval()
+                self.logger.log('eval_total_time', self.timer.total_time(),
+                                self.global_frame)
+                self.eval()
 
             # sample action
             with torch.no_grad(), utils.eval_mode(self.agent):
@@ -619,6 +621,11 @@ class Workspace:
                                         meta,
                                         self.global_step,
                                         eval_mode=False)
+
+            # try to save snapshot
+            if self.global_frame in self.cfg.snapshots:
+                print('snapshot 저장', self.global_frame)
+                self.save_snapshot(smm=False)
 
             # try to update the agent
             if not seed_until_step(self.global_step):
