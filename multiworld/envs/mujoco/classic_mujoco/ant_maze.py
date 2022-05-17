@@ -96,7 +96,7 @@ class AntMazeEnv(AntEnv):
             # 위쪽 벽중심 4.5, 두께1, 따라서 가운데~위벽까지 3.5, 따라서 세로 7
             # 오른쪽 벽중심 4.5, 두께1, 따라서 가운데~오른벽 3.5, 따라서 가로 7
             self.walls = [
-                Wall(0, 1.125, 1.25, 2.375, self.wall_radius),
+                Wall(0, 1.125, 0.1, 2.375, self.wall_radius),
 
                 Wall(0, 4.5, 3.5, 1, self.wall_radius),
                 Wall(0, -4.5, 3.5, 1, self.wall_radius),

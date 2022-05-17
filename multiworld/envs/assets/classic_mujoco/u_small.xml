@@ -1,7 +1,7 @@
 <mujoco>
     <body name="walls" pos="0 0 0">
         <body name="innerwall" pos="0 0 0">
-            <geom type="box" pos="0 1.125 0" size="1.25 2.375 1"
+            <geom type="box" pos="0 1.125 0" size="0.1 2.375 1"
                   rgba=".12 .4 .9 1"
                   contype="3" conaffinity="3" />
         </body>
