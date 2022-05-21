@@ -722,23 +722,23 @@ class AntMazeEnv(AntEnv):
             x_interval = 7 / 10
             y_interval = 7 / 10
         elif self.maze_type == 'fb-small':
-            x_grid = np.linspace(-5.5, 5.5, 11)[:10]
-            y_grid = np.linspace(-5.5, 5.5, 11)[:10]
-            x_interval = 11 / 10
-            y_interval = 11 / 10
+            x_grid = np.linspace(-5.25, 5.25, 11)[:10]
+            y_grid = np.linspace(-5.25, 5.25, 11)[:10]
+            x_interval = 10.5 / 10
+            y_interval = 10.5 / 10
         elif self.maze_type == 'maze-small':
             x_grid = np.linspace(-4, 4, 11)[:10]
             y_grid = np.linspace(-4, 4, 11)[:10]
-            x_interval = 11 / 10
-            y_interval = 11 / 10
+            x_interval = 8 / 10
+            y_interval = 8 / 10
 
+        # FIXME: 디버깅 (벽 뺴고 총 100으로 비율 넣어줄까)
         for n in range(skill_dim):
             for i in x_grid:  
                 for j in y_grid: 
                     ob = np.array(trajectory_all[n])[:,:,0]
-                    if ob[((ob[:,0]<i+x_interval) & (ob[:,0]>=i) & (ob[:,1]<j+y_interval) & (ob[:,1]>=j))].sum() >= 1:
+                    if len(ob[((ob[:,0]<i+x_interval) & (ob[:,0]>=i) & (ob[:,1]<j+y_interval) & (ob[:,1]>=j))]) >= 1:
                         state_cov.add((i,j))
-
         return len(state_cov)
 
     def state_coverage_2(self, trajectory_all, skill_dim):        
@@ -760,15 +760,15 @@ class AntMazeEnv(AntEnv):
             x_interval = 7 / 10
             y_interval = 7 / 10
         elif self.maze_type == 'fb-small':
-            x_grid = np.linspace(-5.5, 5.5, 11)[:10]
-            y_grid = np.linspace(-5.5, 5.5, 11)[:10]
-            x_interval = 11 / 10
-            y_interval = 11 / 10
+            x_grid = np.linspace(-5.25, 5.25, 11)[:10]
+            y_grid = np.linspace(-5.25, 5.25, 11)[:10]
+            x_interval = 10.5 / 10
+            y_interval = 10.5 / 10
         elif self.maze_type == 'maze-small':
             x_grid = np.linspace(-4, 4, 11)[:10]
             y_grid = np.linspace(-4, 4, 11)[:10]
-            x_interval = 11 / 10
-            y_interval = 11 / 10
+            x_interval = 8 / 10
+            y_interval = 8 / 10
 
         all_dots = []
         for idx, trajectory in trajectory_all.items():
@@ -784,7 +784,7 @@ class AntMazeEnv(AntEnv):
         for ob in all_dots:
             for i in x_grid:  
                 for j in y_grid: 
-                    if ob[((ob[:,0]<i+x_interval) & (ob[:,0]>=i) & (ob[:,1]<j+y_interval) & (ob[:,1]>=j))].sum() >= 1:
+                    if len(ob[((ob[:,0]<i+x_interval) & (ob[:,0]>=i) & (ob[:,1]<j+y_interval) & (ob[:,1]>=j))]) >= 1:
                         state_cov.add((i,j))
 
         return len(state_cov)

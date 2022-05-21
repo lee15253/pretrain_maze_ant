@@ -346,7 +346,7 @@ class Workspace:
         num_learned_skills = np.exp(total_diayn_rw / (self.agent.skill_dim * num_eval_each_skill))
 
         if self.maze_type in ['AntU','AntFb','AntMaze']:
-            num_bucket = 150
+            num_bucket = 100
         else:
             num_bucket = 100
         with self.logger.log_and_dump_ctx(self.global_frame, ty='eval') as log:
@@ -426,10 +426,9 @@ class Workspace:
 
             # try to evaluate
             if eval_every_step(self.global_step):
-                if self.global_step != 0:
-                    self.logger.log('eval_total_time', self.timer.total_time(),
-                                    self.global_frame)
-                    self.pretrain_eval()
+                self.logger.log('eval_total_time', self.timer.total_time(),
+                                self.global_frame)
+                self.pretrain_eval()
 
             # sample action
             with torch.no_grad(), utils.eval_mode(self.agent.smm):

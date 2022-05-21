@@ -19,13 +19,13 @@ def run_experiment(experiment):
 if __name__ == '__main__':
     default = ['maximum_timestep=200', 'use_wandb=true', 'agent.batch_size=512', 
     'agent.init_alpha=0.6', 'agent.feature_dim=1024','agent.hidden_dim=1024',
-    'num_pretrain_frames=1010000','oracle_dur=50000', 'num_train_frames=2100000',
+    'num_pretrain_frames=1010000','oracle_dur=50000', 'num_train_frames=21000000',
     'agent.skill_dim=100', 'agent.vae_args.codebook_size=100',
     'agent.max_skill_dim=100']
-    seeds = ['seed=100', 'seed=101','seed=102']
-    maze_types = ['maze_type=AntU', 'maze_type=AntFb']
+    seeds = ['seed=100', 'seed=101','seed=102', 'seed=104']
+    maze_types = ['maze_type=AntU', 'maze_type=AntMaze']
     num_devices = 4
-    num_exp_per_device = 3
+    num_exp_per_device = 2
     pool_size = num_devices * num_exp_per_device
 
     experiments = []
